@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<p>{{ hospital.name }}</p>
+<p>説明: {{ hospital.content }}</p>
+{% if not regist or not  regist.regist_flg%}
+<form method="POST">
+    {{form.csrf_token}}
+  {{form.submit()}}
+  </form>
+{% else %}
+<form method="POST">
+    {{form.csrf_token}}
+  {{form.submit()}}
+  </form>
+{% endif %}
+  <a href="{{url_for('app.send_messages', from_id = current_user.id, to_id = hospital.id) }}">メッセージを送る</a>
+
+{% endblock %}

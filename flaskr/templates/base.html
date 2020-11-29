@@ -3,13 +3,14 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
         <title>Junマツモトの家のメディカル</title>
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         {% if current_user.is_authenticated %}
-        <a class="navbar-brand" href="{{url_for('app.home')}}">ホーム</a>
-        <a class="navbar-brand" href="{{url_for('app.user')}}">病院検索</a>
+        <a class="navbar-brand" href="{{url_for('app.search')}}">病院検索</a>
+        <a class="navbar-brand" href="{{url_for('app.home')}}">マイページ</a>
         <a class="navbar-brand" href="{{url_for('app.logout')}}">ログアウト</a>
         {% else %}
         <a class="navbar-brand" href="{{url_for('app.login')}}">ログイン</a>

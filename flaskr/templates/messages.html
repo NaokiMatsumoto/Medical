@@ -1,0 +1,25 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "base.html" %}
+<link rel="stylesheet" href="https://developers.google.com//maps/documentation/javascript/demos/demos.css">
+    
+{% block content %}
+{% for message in messages %}
+{% if message.from_hospital_id == current_user.id %}
+<div class="speech-bubble-self offset-lg-7 col-lg-4">
+<p>{{message.message}}</p>
+</div>
+{% else %}
+<div class="speech-bubble-dest col-lg-5 offset-lg-1">
+  <p>{{message.message}}</p>
+</div>
+{% endif %}
+{% endfor %}
+<div id="message-form" class="col-lg-4 offset-lg-7 col-md-8 offset-md-4 col-sm-12 col-12">
+        <form method="POST">
+            {{ form.csrf_token }}
+            {{ form.to_user_id(value=to_user_id)}}
+            {{ render_field(form.message, cols="50", rows="5")}}
+            {{ form.submit() }}
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "base.html" %}
+<link rel="stylesheet" href="https://developers.google.com//maps/documentation/javascript/demos/demos.css">
+    
+{% block content %}
+<form method="POST">
+    {{form.csrf_token}}
+    {{render_field(form.area)}}
+    {{render_field(form.from_time)}}～{{render_field(form.to_time)}}
+    <br>
+    {{render_field(form.kensa)}}
+    {{render_field(form.shikkan)}}
+    {{render_field(form.chiryo)}}
+    <br>
+    {{form.submit()}}
+</form>
+{% if map %}
+{{map.html}}{{map.js}}
+{% endif %}
+{% if hospital %}
+<p>検索結果</p>
+<a href='{{ url_for("app.hospital_detail", hospital_id = 1) }}'>{{ hospital.name }}</a>
+{{ hospital.content }}
+
+{% endif %}
+{% endblock %}

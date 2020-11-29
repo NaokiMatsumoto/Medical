@@ -2,7 +2,30 @@
 {% block content %}
     <div>
         {% if current_user.is_authenticated %}
-        <p>ユーザログイン済み {{current_user.username}}</p>
+        <a href="https://www.google.com"><h3>病院情報を変更する</h3></a>
+        <hr>
+        <table class="table table-striped table-bordered">
+        <tr>
+        <th>取引日</th>
+        <th>診療所名</th>
+        </tr>
+        <tr>
+          <td>2020年11月12日</td>
+          <td>春日部A病院</td>
+        </tr>
+        <tr>
+          <td>2020年11月12日</td>
+          <td>春日部B病院</td>
+        </tr>
+        <tr>
+          <td>2020年11月13日</td>
+          <td>春日部C病院</td>
+        </tr>
+        <tr>
+          <td>2020年11月14日</td>
+          <td>春日部D病院</td>
+        </tr>
+        </table>
         {% else %}
         <p>ログイン or 登録をしてください</p>
         {% endif %}
